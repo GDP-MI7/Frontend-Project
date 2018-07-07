@@ -8,7 +8,18 @@
         <h4 class="card-title ">Show Tags</h4>
       </div>
       <div class="card-body">
-        <ngx-datatable class="material" 
+          <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input type="text" class="form-control" 
+                    (keyup)='updateFilter($event)' 
+                    placeholder="Search text...">
+                </div>
+              </div>
+            </div>
+        <ngx-datatable 
+          #table
+          class="material" 
           [rows]="rows" 
           [columns]="columns" 
           [columnMode]="'force'" 

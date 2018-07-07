@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-list-tags',
@@ -8,7 +9,9 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 export class ListTagsComponent implements OnInit {
   @ViewChild('editTmpl') editTmpl: TemplateRef<any>;
   @ViewChild('hdrTpl') hdrTpl: TemplateRef<any>;
-
+  @ViewChild(DatatableComponent) table: DatatableComponent;
+  
+  temp = [];
   rows = [
     { name: 'Austin', gender: 'Male', company: 'Swimlane' },
     { name: 'Dany', gender: 'Male', company: 'KFC' },
@@ -16,7 +19,7 @@ export class ListTagsComponent implements OnInit {
   ];
   columns = [
     {
-      name: 'name', cellTemplate: this.editTmpl,
+      name: 'Name', cellTemplate: this.editTmpl,
       headerTemplate: this.hdrTpl,
     },
     {
@@ -34,6 +37,20 @@ export class ListTagsComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+    this.temp = [...this.rows]
+  }
+
+  updateFilter(event) {
+    const val = event.target.value.toLowerCase();
+
+    // filter our data
+    const temp = this.temp.filter(function(d) {
+      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+
+    // update the rows
+    this.rows = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.table.offset = 0;
   }
 }
