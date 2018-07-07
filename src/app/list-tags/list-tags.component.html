@@ -8,7 +8,22 @@
         <h4 class="card-title ">Show Tags</h4>
       </div>
       <div class="card-body">
-        
+        <ngx-datatable class="material" 
+          [rows]="rows" 
+          [columns]="columns" 
+          [columnMode]="'force'" 
+          [headerHeight]="50" 
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [limit]="2">
+        </ngx-datatable>
+        <ng-template #hdrTpl let-column="column">
+          <strong>Fancy</strong>: {{column.name}} !!
+        </ng-template>
+        <ng-template #editTmpl let-row="row" let-value="value">
+          <img *ngIf="value === 'male'" width="150" src="https://media.giphy.com/media/I8nepxWwlEuqI/giphy.gif" />
+          <img *ngIf="value === 'female'" width="150" src="https://media.giphy.com/media/sxSVG3XHf7yww/giphy.gif" />
+        </ng-template>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-list-tags',
@@ -6,10 +6,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-tags.component.css']
 })
 export class ListTagsComponent implements OnInit {
+  @ViewChild('editTmpl') editTmpl: TemplateRef<any>;
+  @ViewChild('hdrTpl') hdrTpl: TemplateRef<any>;
 
-  constructor() { }
+  rows = [
+    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
+    { name: 'Dany', gender: 'Male', company: 'KFC' },
+    { name: 'Molly', gender: 'Female', company: 'Burger King' },
+  ];
+  columns = [
+    {
+      name: 'name', cellTemplate: this.editTmpl,
+      headerTemplate: this.hdrTpl,
+    },
+    {
+      name: 'Gender', cellTemplate: this.editTmpl,
+      headerTemplate: this.hdrTpl,
+    },
+    {
+      name: 'Company', cellTemplate: this.editTmpl,
+      headerTemplate: this.hdrTpl,
+    }
+  ];
 
-  ngOnInit() {
+  constructor() {
+
   }
 
+  ngOnInit() {
+  
+  }
 }

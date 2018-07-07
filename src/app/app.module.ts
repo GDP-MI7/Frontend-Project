@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +13,12 @@ import { ShowReportComponent } from './show-report/show-report.component';
     AppComponent,
     HomeComponent,
     ListTagsComponent,
-    ShowReportComponent
+    ShowReportComponent 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
