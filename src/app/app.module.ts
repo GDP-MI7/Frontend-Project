@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ListTagsComponent } from './list-tags/list-tags.component';
 import { ShowReportComponent } from './show-report/show-report.component';
+import { PieChartComponent } from './show-report/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListTagsComponent,
-    ShowReportComponent 
+    ShowReportComponent,
+    PieChartComponent 
   ],
   imports: [
     BrowserModule,
